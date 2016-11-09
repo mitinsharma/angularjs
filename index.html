@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="myModule">
+    <head>
+        <script src="script/angular.min.js"></script>
+        <script src="script/script.js"></script>
+    </head>
+    <body >
+        <div>
+            10 + 20 = {{ 10 + 20 }}
+        </div>
+        
+        <div>
+            {{ ['Mitin','Rahul','David','John'][0] }}
+        </div>
+        
+        <div>
+            {{ {name:'Mitin',age:'22'}.age }}
+        </div>
+        
+        <h2>Controllers - 1</h2>
+        <div ng-controller="myController">
+        {{ message }}
+        </div>
+        
+        <h2>Controllers - 2</h2>
+        <div ng-controller="myController">
+        
+            First Name : {{employee.firstName}} <br/>
+            Last Name: {{employee.lastName}}<br/>
+            Gender: {{employee.gender}}<br/>
+        </div>
+        
+	<h3>Two Way data binding</h3>
+
+	<div >
+		<input type="text" ng-model="message"/><br/><br/>
+		{{message}}
+	</div>	
+
+    </body>
+</html>
