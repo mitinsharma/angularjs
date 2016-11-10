@@ -5,6 +5,7 @@
         <script src="script/script.js"></script>
     </head>
     <body >
+
         <div>
             10 + 20 = {{ 10 + 20 }}
         </div>
@@ -23,19 +24,63 @@
         </div>
         
         <h2>Controllers - 2</h2>
-        <div ng-controller="myController">
+        <div  ng-controller="myController">
+        <div>
         
             First Name : {{employee.firstName}} <br/>
             Last Name: {{employee.lastName}}<br/>
             Gender: {{employee.gender}}<br/>
         </div>
         
-	<h3>Two Way data binding</h3>
+	   <h2>Two Way data binding</h2>
 
-	<div >
-		<input type="text" ng-model="message"/><br/><br/>
-		{{message}}
-	</div>	
+        <div>
+            <input type="text" ng-model="employee.firstName"/><br/><br/>
+		    {{employee.firstName}}
+        </div>
 
+        <h2>ng-repeat Directive</h2>
+
+        <table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+            </tr>
+            <tr ng-repeat='emp in employees'>
+                <td>{{emp.fname}}</td>
+                <td>{{emp.lname}}</td>
+                <td>{{emp.gender}}</td>
+            </tr>
+        </table>
+
+        <h2>Nested ng-repeat Directive</h2>
+
+            <ul>
+                <li ng-repeat='country in countries' ng-init='parentIndex= $index'>
+                    {{country.name}} - index = {{$index}}
+                    <ul><li ng-repeat='city in country.cities'>{{city.name}}, parent index = {{ parentIndex}}, index = {{$index}}</li></ul>
+                </li>
+            </ul>
+
+        <h2>HANDLING EVENTS IN ANGULAR JS</h2>
+
+            <table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>Technology</th>
+                <th>Likes</th>
+                <th>Dislikes</th>
+                <th>Like/Dislike</th>
+            </tr>
+            <tr ng-repeat='tech in technologies'>
+                <td>{{tech.name}}</td>
+                <td>{{tech.likes}}</td>
+                <td>{{tech.dislikes}}</td>
+                <td><input type="button" value="Like" ng-click="incLikes(tech)">
+                    <input type="button" value="Dislike" ng-click="incDislikes(tech)"></td>
+            </tr>
+        </table>
+
+        </div>
     </body>
 </html>
