@@ -91,6 +91,9 @@
             <option value="lname">Last Name</option>
             <option value="salary">Salary</option>
             </select><br/><br/>
+        Search: <input type="text" ng-model="empsearch.fname" placeholder="Search Employee.."/> <br/><br/>
+        <!--search only in fname column (empsearch.fname)
+            search in all columns just write (empsearch)--->
         <table border='1' cellspacing='0' cellpadding='5'>
             <tr>
                 <th ng-click="changeOrder('fname')">First Name <i class="fa fa-caret-{{fname_arrowDir}}"></i></th>
@@ -100,7 +103,7 @@
                 <th ng-click="changeOrder('salary')">Salary (number) <i class="fa fa-caret-{{salary_arrowDir}}"></i></th>
                 <th>Salary (currency)</th>
             </tr>
-            <tr ng-repeat="femp in filter_emps | limitTo: rowLimit:0 | orderBy: sortColumn:decOrder">
+            <tr ng-repeat="femp in filter_emps | limitTo: rowLimit:0 | orderBy: sortColumn:decOrder | filter: empsearch">
                 <!--false means acceding order/true means decending order-->
                 <!--also can use '+name' for accending order/ '-name' for decending order-->
                 <td>{{femp.fname | uppercase}}</td>

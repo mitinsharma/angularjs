@@ -81,7 +81,6 @@ var myApp = angular
                 {fname:'akash',lname:'patel',gender:'male',dob:new Date("January 12, 1993"),salary:15152.225},
                 {fname:'saajan',lname:'kapoor',gender:'female',dob:new Date("January 12, 1993"),salary:7552.125},
                 {fname:'saajan',lname:'kapoor',gender:'female',dob:new Date("January 12, 1993"),salary:1452.125}
-
             ];
 
             $scope.filter_emps = filter_emps;
@@ -92,6 +91,7 @@ var myApp = angular
             $scope.fname_arrowDir = 'down';
             $scope.dob_arrowDir = 'down';
             $scope.salary_arrowDir = 'down';
+
 
             $scope.changeOrder = function($col){
                 /*
@@ -113,5 +113,8 @@ var myApp = angular
                 $scope.salary_arrowDir = ($scope.decOrder && $col == 'salary') ? 'up' : 'down';
                 $scope.sortColumn=$col;
             }
+
+            $scope.empsearch = "";
+
         });
 
