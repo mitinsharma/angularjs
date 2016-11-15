@@ -3,6 +3,7 @@
     <head>
         <script src="script/angular.min.js"></script>
         <script src="script/script.js"></script>
+        <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
     </head>
     <body >
 
@@ -78,6 +79,36 @@
                 <td>{{tech.dislikes}}</td>
                 <td><input type="button" value="Like" ng-click="incLikes(tech)">
                     <input type="button" value="Dislike" ng-click="incDislikes(tech)"></td>
+            </tr>
+        </table>
+
+
+        <h2>FILTERS - format/sort/filter</h2>
+
+        Rows to display: <input type="number" min="0" max="5" ng-model="rowLimit"><br/><br/>
+        Order by : <select ng-model='sortColumn'>
+            <option value="fname">First Name</option>
+            <option value="lname">Last Name</option>
+            <option value="salary">Salary</option>
+            </select><br/><br/>
+        <table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th ng-click="changeOrder('fname')">First Name <i class="fa fa-caret-{{fname_arrowDir}}"></i></th>
+                <th ng-click="changeOrder('lname')">Last Name</th>
+                <th ng-click="changeOrder('gender')">Gender</th>
+                <th ng-click="changeOrder('dob')" >D.O.B <i class="fa fa-caret-{{dob_arrowDir}}"></i></th>
+                <th ng-click="changeOrder('salary')">Salary (number) <i class="fa fa-caret-{{salary_arrowDir}}"></i></th>
+                <th>Salary (currency)</th>
+            </tr>
+            <tr ng-repeat="femp in filter_emps | limitTo: rowLimit:0 | orderBy: sortColumn:decOrder">
+                <!--false means acceding order/true means decending order-->
+                <!--also can use '+name' for accending order/ '-name' for decending order-->
+                <td>{{femp.fname | uppercase}}</td>
+                <td>{{femp.lname | uppercase}}</td>
+                <td>{{femp.gender | lowercase}}</td>
+                <td>{{femp.dob |date:DD/MM/YYYY}}</td>
+                <td>{{femp.salary | number:2}}</td>
+                <td>{{femp.salary | currency:$:1}}</td>
             </tr>
         </table>
 
