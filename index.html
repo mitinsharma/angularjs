@@ -91,7 +91,10 @@
             <option value="lname">Last Name</option>
             <option value="salary">Salary</option>
             </select><br/><br/>
-        Search: <input type="text" ng-model="empsearch.fname" placeholder="Search Employee.."/> <br/><br/>
+        Search First Name: <input type="text" ng-model="empsearch.fname" placeholder="Search Employee.."/>
+        Search Last Name: <input type="text" ng-model="empsearch.lname" placeholder="Search Employee.."/>
+            <input type="checkbox" ng-model="exactMatch"> Exact Match
+            <br/><br/>
         <!--search only in fname column (empsearch.fname)
             search in all columns just write (empsearch)--->
         <table border='1' cellspacing='0' cellpadding='5'>
@@ -103,7 +106,7 @@
                 <th ng-click="changeOrder('salary')">Salary (number) <i class="fa fa-caret-{{salary_arrowDir}}"></i></th>
                 <th>Salary (currency)</th>
             </tr>
-            <tr ng-repeat="femp in filter_emps | limitTo: rowLimit:0 | orderBy: sortColumn:decOrder | filter: empsearch">
+            <tr ng-repeat="femp in filter_emps | limitTo: rowLimit:0 | orderBy: sortColumn:decOrder | filter: empsearch:exactMatch">
                 <!--false means acceding order/true means decending order-->
                 <!--also can use '+name' for accending order/ '-name' for decending order-->
                 <td>{{femp.fname | uppercase}}</td>
@@ -115,6 +118,42 @@
             </tr>
         </table>
 
+
+            <h2>Custom Filters</h2>
+            <table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+            <tr ng-repeat="empc in empCf">
+                <td>{{empc.name}}</td>
+                <td>{{empc.gender | genderFilter}}</td>
+                <td>{{empc.salary}}</td>
+            </tr>
+        </table>
+
+            <h2>NG HIDE and NG SHOW</h2>
+            <input type="checkbox" ng-model="hideSalary"> Hide Salary
+            <br/><br/>
+            <table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th ng-hide="hideSalary">Salary</th>
+            </tr>
+            <tr ng-repeat="empc in empCf">
+                <td>{{empc.name}}</td>
+                <td>{{empc.gender | genderFilter}}</td>
+                <td ng-show="!hideSalary">{{empc.salary}}</td>
+            </tr>
+        </table>
+
+            <h2>NG INCLUDE DIRECTIVE</h2>
+            <!--<div ng-include="'empTable.html'"></div>-->
+            <div ng-include="empPage"></div>
+
         </div>
+        <br/><br/>
     </body>
 </html>

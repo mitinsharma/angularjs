@@ -1,0 +1,12 @@
+<table border='1' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+            <tr ng-repeat="empc in empCf">
+                <td>{{empc.name}}</td>
+                <td>{{empc.gender | genderFilter}}</td>
+                <td>{{empc.salary}}</td>
+            </tr>
+        </table>

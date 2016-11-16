@@ -28,6 +28,13 @@ myApp.controller("myController",myController);
 
 var myApp = angular
             .module("myModule",[])
+            .filter("genderFilter",function(){
+                return function(gender){
+                    if(gender==1)return 'male';
+                    else if(gender==2) return 'female';
+                    else return 'not defined';
+                }
+            })
             .controller("myController", function($scope){
 
             $scope.message = "AngularJS tutorial";
@@ -115,6 +122,23 @@ var myApp = angular
             }
 
             $scope.empsearch = "";
+
+
+
+                //Custom Filters
+
+                var empCustFilter = [{name:'mitin',gender:1,salary:4581},
+                                      {name:'rahul',gender:1,salary:2485},
+                                       {name:'richa',gender:2,salary:3647},
+                                       {name:'chumka',gender:3,salary:4515}];
+                $scope.empCf = empCustFilter;
+
+
+            //NG INCLUDE
+
+            $scope.empPage = "empTable.html";
+
+
 
         });
 

@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="myModule">
+    <head>
+        <script src="script/angular.min.js"></script>
+        <script src="script/script1.js"></script>
+    </head>
+    <body ng-controller='myController' ng-init="displayData()">
+
+        <h2>{{title}}</h2>
+
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>City</th>
+                <th>Salary</th>
+            </tr>
+            <tr ng-repeat="emp in employees">
+                <td>{{emp.name}}</td>
+                <td>{{emp.gender}}</td>
+                <td>{{emp.city}}</td>
+                <td>{{emp.salary}}</td>
+            </tr>
+        </table>
+
+
+    </body>
+</html>
