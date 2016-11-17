@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="myModule">
+    <head>
+        <script src="script/angular.min.js"></script>
+        <script src="script/script1.js"></script>
+        <script src="script/customFilter.js"></script>
+    </head>
+    <body ng-controller='myController'>
+
+        <h2>{{title2}}</h2>
+
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <td>Input</td>
+                <td><input type="text" ng-model="input"/></td>
+            </tr>
+            <tr>
+                <td>Output</td>
+                <td><input type="text" ng-model="output"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="button" ng-click="trasformString(input)" value="Process"/></td>
+            </tr>
+        </table>
+
+
+    </body>
+</html>
